@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Info</title>
+</head>
+<body>
+    <h1>Stock Info</h1>
+    <form method="POST">
+        <label for="ticker_symbol">Enter a stock symbol:</label>
+        <input type="text" id="ticker_symbol" name="ticker_symbol" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if stock_info %}
+    <h2>{{ stock_info.longName }}</h2>
+    <p>Symbol: {{ stock_info.symbol }}</p>
+    <p>Current Price: {{ stock_info.regularMarketPrice }}</p>
+    <p>Open Price: {{ stock_info.regularMarketOpen }}</p>
+    <p>High Price: {{ stock_info.regularMarketDayHigh }}</p>
+    <p>Low Price: {{ stock_info.regularMarketDayLow }}</p>
+    {% endif %}
+
+    {% if graph %}
+    <img src="data:image/png;base64,{{ graph }}" alt="Stock Price Graph">
+    {% endif %}
+</body>
+</html>
